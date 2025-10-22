@@ -41,8 +41,18 @@ class _HomeScreenState extends State<HomeScreen> {
     PreferencesManager().setString("tasks", jsonEncode(updatedTask));
   }
 
+  _deletetask(int id) {
+    if (id == null) return;
+    setState(() {
+      tasks.removeWhere((tasks) => tasks.id == id);
+      _calculatepercent();
+    });
+    final updatedTask = tasks.map((element) => element.toJson()).toList();
+    PreferencesManager().setString("tasks", jsonEncode(updatedTask));
+  }
+
   void _loadTask() async {
-    final taskencoded = await PreferencesManager().getString("tasks");
+    final taskencoded = PreferencesManager().getString("tasks");
     if (taskencoded != null) {
       final taskafterdecode = jsonDecode(taskencoded) as List<dynamic>;
       setState(() {
@@ -79,12 +89,14 @@ class _HomeScreenState extends State<HomeScreen> {
             borderRadius: BorderRadius.circular(30),
           ),
           onPressed: () async {
-            final bool result = await Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => AddTaskScreen()),
-            );
+            bool result =
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AddTaskScreen()),
+                ) ??
+                false;
 
-            if (result != null && result) {
+            if (result) {
               _loadTask();
             }
           },
@@ -134,7 +146,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         "almost done ! ",
                         style: Theme.of(context).textTheme.displayLarge,
                       ),
-                      CustomSvgPictureWidget(path: "assets/images/3.svg",withColorFilter: false,),
+                      CustomSvgPictureWidget(
+                        path: "assets/images/3.svg",
+                        withColorFilter: false,
+                      ),
                     ],
                   ),
                   SizedBox(height: 16),
@@ -166,6 +181,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   TaskListWidgwts(
+                    onEdit: () {
+                      _loadTask();
+                    },
+                    ondelete: (id) {
+                      _deletetask(id);
+                    },
                     tasks: tasks,
                     onTap: (value, index) {
                       _doneTasks(value, index);

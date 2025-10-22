@@ -8,13 +8,14 @@ import 'package:project1/screens/welcomescreen.dart';
 import 'package:project1/widgets/custom_svg_picture_widget.dart';
 
 class ProfileScreen extends StatefulWidget {
-  ProfileScreen({super.key});
+  const ProfileScreen({super.key});
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  @override
   void initState() {
     super.initState();
     _loadData();

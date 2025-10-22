@@ -4,7 +4,7 @@ import 'package:project1/core/widget/custom_text_form_field.dart';
 import 'package:project1/screens/profile_screen.dart';
 
 class UserDetailsScreen extends StatefulWidget {
-  UserDetailsScreen({super.key});
+  const UserDetailsScreen({super.key});
   @override
   State<UserDetailsScreen> createState() => _UserDetailsScreenState();
 }
@@ -16,6 +16,7 @@ String? username;
 String? motivate;
 
 class _UserDetailsScreenState extends State<UserDetailsScreen> {
+  @override
   void initState() {
     super.initState();
     _loadusername();

@@ -1,9 +1,13 @@
 import 'dart:math';
 
 class TaskModels {
-  final String taskName;
-  final String description;
-  final bool isHighpriority;
+  // final String taskName;
+  // final String description;
+  // final bool isHighpriority;
+  // final int id;
+   String taskName;
+   String description;
+   bool isHighpriority;
   final int id;
   bool isDone;
   TaskModels( {

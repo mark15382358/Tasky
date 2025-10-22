@@ -29,6 +29,11 @@ ThemeData darkTheme = ThemeData(
       ),
     ),
   ),
+  textButtonTheme: TextButtonThemeData(
+    style: ButtonStyle(
+      foregroundColor: WidgetStatePropertyAll(Color(0xffFFFCFC)),
+    ),
+  ),
   floatingActionButtonTheme: FloatingActionButtonThemeData(
     backgroundColor: Color(0xff15B86C),
     foregroundColor: Color(0xffFFFCFC),
@@ -82,7 +87,7 @@ ThemeData darkTheme = ThemeData(
 
     ////////////////////////////////////////////////
     labelLarge: TextStyle(
-      color: Color(0xC6C6C6),
+      color: Color(0x00c6c6c6),
       fontSize: 16,
       fontWeight: FontWeight.w400,
     ),
@@ -158,7 +163,7 @@ ThemeData darkTheme = ThemeData(
     elevation: 2,
     shadowColor: Color(0xff15B86C),
     labelTextStyle: WidgetStateProperty.all(
-      TextStyle(fontSize: 20,fontWeight: FontWeight.w400)
+      TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
     ),
   ),
 );

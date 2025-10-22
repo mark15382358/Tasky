@@ -5,14 +5,14 @@ class CustomTextFormField extends StatelessWidget {
     super.key,
     required this.controller,
     this.maxLines,
-    required this.hintText,
+     this.hintText,
     this.validator,
-    required this.title,
+     this.title,
   });
   final TextEditingController controller;
   final int? maxLines;
-  final String hintText;
-  final String title;
+  final String? hintText;
+  final String? title;
   // final Function (String? value)?validator;
   final String? Function(String?)? validator;
 
@@ -24,7 +24,7 @@ class CustomTextFormField extends StatelessWidget {
         children: [
           Align(
             alignment: Alignment.topLeft,
-            child: Text(title, style: Theme.of(context).textTheme.titleMedium),
+            child: Text(title??"No title", style: Theme.of(context).textTheme.titleMedium),
           ),
           SizedBox(height: 8),
 

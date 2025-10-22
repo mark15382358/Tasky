@@ -7,7 +7,7 @@ import 'package:project1/models/task_models.dart';
 import 'package:project1/screens/home_screen.dart';
 
 class AddTaskScreen extends StatefulWidget {
-  AddTaskScreen({super.key});
+  const AddTaskScreen({super.key});
 
   @override
   State<AddTaskScreen> createState() => _AddTaskScreenState();
@@ -47,6 +47,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                                 false) {
                               return "Please Enter the Task Name";
                             }
+                            return null;
                           },
                         ),
                         SizedBox(height: 20),

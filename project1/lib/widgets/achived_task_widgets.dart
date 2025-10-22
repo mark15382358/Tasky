@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:project1/core/theme/theme_controller.dart';
 
 class AchivedTaskWidgets extends StatefulWidget {
-  AchivedTaskWidgets({
+  const AchivedTaskWidgets({
     super.key,
     required this.totalDoneTasks,
     required this.totalTasks,

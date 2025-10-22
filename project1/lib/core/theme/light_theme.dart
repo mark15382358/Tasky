@@ -27,6 +27,12 @@ ThemeData lightTheme = ThemeData(
       ),
     ),
   ),
+  textButtonTheme: TextButtonThemeData(
+    style: ButtonStyle(
+      foregroundColor: WidgetStatePropertyAll(Color(0xff161F1B)),
+
+    ),
+  ),
   floatingActionButtonTheme: FloatingActionButtonThemeData(
     backgroundColor: Color(0xff15B86C),
     foregroundColor: Color(0xffFFFCFC),
@@ -155,7 +161,7 @@ ThemeData lightTheme = ThemeData(
   ),
   splashFactory: NoSplash.splashFactory,
   popupMenuTheme: PopupMenuThemeData(
-    color:Color(0xffF6F7F9),
+    color: Color(0xffF6F7F9),
     shape: RoundedRectangleBorder(
       side: BorderSide(color: Color(0xffD1DAD6), width: 1),
       borderRadius: BorderRadius.circular(16),
@@ -163,8 +169,10 @@ ThemeData lightTheme = ThemeData(
     elevation: 2,
     // shadowColor: Color(0xff15B86C),
     labelTextStyle: WidgetStateProperty.all(
-      TextStyle(fontSize: 20, fontWeight: FontWeight.w400,
-      color: Color(0xff161F1B)
+      TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w400,
+        color: Color(0xff161F1B),
       ),
     ),
   ),

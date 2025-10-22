@@ -77,9 +77,10 @@ class Welcomescreen extends StatelessWidget {
                     hintText: 'e.g. Sarah Khalid',
                     title: "Full Name",
                     validator: (String? value) {
-                      if (value == null || value!.trim().isEmpty ?? false) {
+                      if (value == null || value.trim().isEmpty ?? false) {
                         return "Please Enter the Full Name";
                       }
+                      return null;
                     },
                   ),
                 ),

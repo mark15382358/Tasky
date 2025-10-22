@@ -21,8 +21,17 @@ class _CompleteTasksScreenState extends State<CompleteTasksScreen> {
     _loadTasks();
   }
 
+  _deletetask(int id) {
+    if (id == null) return;
+    setState(() {
+      tasksDone.removeWhere((tasks) => tasks.id == id);
+    });
+    final updatedTask = tasksDone.map((element) => element.toJson()).toList();
+    PreferencesManager().setString("tasks", jsonEncode(updatedTask));
+  }
+
   Future<void> _loadTasks() async {
-    final allData =  PreferencesManager().getString('tasks');
+    final allData = PreferencesManager().getString('tasks');
     if (allData != null) {
       final taskList = (jsonDecode(allData) as List)
           .map((e) => TaskModels.fromJson(e))
@@ -52,11 +61,17 @@ class _CompleteTasksScreenState extends State<CompleteTasksScreen> {
         ),
         Expanded(
           child: TaskListWidgwts(
+            onEdit: () {
+              _loadTasks();
+            },
+            ondelete: (index) {
+              _deletetask(index);
+            },
             emptyMessage: "No Task Found",
             tasks: completedTasks,
             onTap: (value, index) async {
               // 1) المهمة اللي اتضغطت عليها (من قائمة العرض)
-              final clickedTask = completedTasks[index!];
+              final clickedTask = completedTasks[index];
 
               // 2) حدث الحالة فوراً في الكائن نفسه
               setState(() {
