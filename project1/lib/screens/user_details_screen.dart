@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project1/core/services/preferences_manager.dart';
 import 'package:project1/core/widget/custom_text_form_field.dart';
-import 'package:project1/screens/profile_screen.dart';
+// import 'package:project1/screens/profile_screen.dart';
 
 class UserDetailsScreen extends StatefulWidget {
   const UserDetailsScreen({super.key});

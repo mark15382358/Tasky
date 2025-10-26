@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -24,11 +25,13 @@ class _HomeScreenState extends State<HomeScreen> {
   int totalDoneTasks = 0;
   int totalTasks = 0;
   double percent = 0;
+  String?  ImagePath;
   @override
   void initState() {
     super.initState();
     _loadusername();
     _loadTask();
+    _loadImage();
   }
 
   _doneTasks(value, index) async {
@@ -76,6 +79,15 @@ class _HomeScreenState extends State<HomeScreen> {
       username = PreferencesManager().getString("username");
     });
   }
+  
+ void _loadImage() {
+  final path = PreferencesManager().getString("user_image");
+  if (path != null && File(path).existsSync()) {
+    setState(() {
+      ImagePath = path;
+    });
+  }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -114,7 +126,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   Row(
                     children: [
                       CircleAvatar(
-                        backgroundImage: AssetImage("assets/images/6.png"),
+                      
+                        backgroundImage: ImagePath==null? AssetImage("assets/images/6.png"):
+                        FileImage(File(ImagePath!))as ImageProvider
+                        ,
                       ),
                       SizedBox(width: 8),
                       Column(

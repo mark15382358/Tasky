@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
+// import 'package:flutter_svg/flutter_svg.dart';
 import 'package:project1/core/services/preferences_manager.dart';
 import 'package:project1/core/theme/theme_controller.dart';
-import 'package:project1/main.dart';
+// import 'package:project1/main.dart';
 import 'package:project1/screens/user_details_screen.dart';
 import 'package:project1/screens/welcomescreen.dart';
 import 'package:project1/widgets/custom_svg_picture_widget.dart';
@@ -27,11 +31,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
     setState(() {
       username = PreferencesManager().getString("username");
       motivate = PreferencesManager().getString("motivate");
-      // isDarkMode = PreferencesManager().getBool("theme")!;
+      userImagePath = PreferencesManager().getString("user_image");
     });
   }
 
-  // String? username;
+  String? username;
+  String? motivate;
+  File? _selectedImage;
+  String? userImagePath;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,13 +64,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Padding(
                           padding: const EdgeInsets.all(18),
                           child: CircleAvatar(
-                            backgroundImage: AssetImage("assets/images/6.png"),
+                            backgroundImage: userImagePath == null
+                                ? AssetImage("assets/images/6.png")
+                                : FileImage(File(userImagePath!)),
                             backgroundColor: Colors.transparent,
                             radius: 60,
                           ),
                         ),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () async {
+                            showImageSourceDialog(context, (
+                              XFile selectedFile,
+                            ) {
+                              setState(() {
+                                userImagePath = selectedFile.path;
+                              });
+                            });
+                          },
                           child: Container(
                             width: 45,
                             height: 45,
@@ -177,6 +194,70 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  void SaveImage(XFile Image) async {
+    final appDir = await getApplicationDocumentsDirectory();
+    print(Image.name);
+    final newImage = await File(
+      Image.path,
+    ).copy("${appDir.path}/${Image.name}");
+    PreferencesManager().setString("user_image", newImage.path);
+    print(newImage.path);
+  }
+
+  showImageSourceDialog(BuildContext context, Function(XFile) selectedFile) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return SimpleDialog(
+          title: Text(
+            "Select Image Source",
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+
+          children: [
+            Padding(padding: EdgeInsets.all(16)),
+            SimpleDialogOption(
+              onPressed: () async {
+                XFile? Image = await ImagePicker().pickImage(
+                  source: ImageSource.camera,
+                );
+                if (Image != null) {
+                  SaveImage(Image);
+                  selectedFile(Image!);
+                  Navigator.pop(context);
+                }
+              },
+              child: Row(
+                children: [
+                  Icon(Icons.camera_alt),
+                  SizedBox(width: 8),
+                  Text("Camera"),
+                ],
+              ),
+            ),
+            SimpleDialogOption(
+              onPressed: () async {
+                XFile? Image = await ImagePicker().pickImage(
+                  source: ImageSource.gallery,
+                );
+                selectedFile(Image!);
+                      SaveImage(Image);
+                Navigator.pop(context);
+              },
+              child: Row(
+                children: [
+                  Icon(Icons.photo_library),
+                  SizedBox(width: 8),
+                  Text("Galary"),
+                ],
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

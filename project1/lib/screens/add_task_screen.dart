@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:project1/core/services/preferences_manager.dart';
 import 'package:project1/core/widget/custom_text_form_field.dart';
 import 'package:project1/models/task_models.dart';
-import 'package:project1/screens/home_screen.dart';
 
 class AddTaskScreen extends StatefulWidget {
   const AddTaskScreen({super.key});
@@ -43,8 +42,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                           hintText: "Finish UI design for login screen",
                           title: "Task Name",
                           validator: (String? value) {
-                            if (value == null || value.trim().isEmpty ??
-                                false) {
+                            if (value == null || value.trim().isEmpty) {
                               return "Please Enter the Task Name";
                             }
                             return null;
