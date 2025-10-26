@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:project1/core/services/preferences_manager.dart';
 import 'package:project1/core/widget/custom_text_form_field.dart';
-import 'package:project1/screens/home_screen.dart';
-import 'package:project1/screens/main_screen.dart';
+import 'package:project1/features/home/home_screen.dart';
+import 'package:project1/features/navigation/main_screen.dart';
 import 'package:project1/widgets/custom_svg_picture_widget.dart';
 
 class Welcomescreen extends StatelessWidget {

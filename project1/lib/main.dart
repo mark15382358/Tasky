@@ -3,8 +3,8 @@ import 'package:project1/core/services/preferences_manager.dart';
 import 'package:project1/core/theme/dark_theme.dart';
 import 'package:project1/core/theme/light_theme.dart';
 import 'package:project1/core/theme/theme_controller.dart';
-import 'package:project1/screens/main_screen.dart';
-import 'package:project1/screens/welcomescreen.dart';
+import 'package:project1/features/navigation/main_screen.dart';
+import 'package:project1/features/welcome/welcomescreen.dart';
 
 ValueNotifier<ThemeMode> themeNotifier = ValueNotifier(ThemeMode.dark);
 void main() async {

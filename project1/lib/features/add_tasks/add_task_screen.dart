@@ -3,7 +3,37 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:project1/core/services/preferences_manager.dart';
 import 'package:project1/core/widget/custom_text_form_field.dart';
-import 'package:project1/models/task_models.dart';
+class TaskModels {
+  final int id;
+  final String taskName;
+  final String description;
+  final bool isHighpriority;
+
+  TaskModels({
+    required this.id,
+    required this.taskName,
+    required this.description,
+    required this.isHighpriority,
+  });
+
+  factory TaskModels.fromJson(Map<String, dynamic> json) {
+    return TaskModels(
+      id: json['id'] as int,
+      taskName: json['taskName'] as String? ?? '',
+      description: json['description'] as String? ?? '',
+      isHighpriority: json['isHighpriority'] as bool? ?? false,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'taskName': taskName,
+      'description': description,
+      'isHighpriority': isHighpriority,
+    };
+  }
+}
 
 class AddTaskScreen extends StatefulWidget {
   const AddTaskScreen({super.key});

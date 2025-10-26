@@ -7,8 +7,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:project1/core/services/preferences_manager.dart';
 import 'package:project1/core/theme/theme_controller.dart';
 // import 'package:project1/main.dart';
-import 'package:project1/screens/user_details_screen.dart';
-import 'package:project1/screens/welcomescreen.dart';
+import 'package:project1/features/profile/user_details_screen.dart';
+import 'package:project1/features/welcome/welcomescreen.dart';
 import 'package:project1/widgets/custom_svg_picture_widget.dart';
 
 class ProfileScreen extends StatefulWidget {
