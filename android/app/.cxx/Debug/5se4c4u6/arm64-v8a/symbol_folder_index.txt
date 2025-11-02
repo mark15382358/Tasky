@@ -1,0 +1,1 @@
+/Users/usamaelgendy/Work/My_Cources/usama_elgendy_courses /mastering_flutter_from_zero_to_hero /sourse_code/tasky/build/app/intermediates/cxx/Debug/5se4c4u6/obj/arm64-v8a
