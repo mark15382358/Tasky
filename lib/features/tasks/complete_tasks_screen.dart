@@ -5,8 +5,7 @@ import 'package:tasky/features/tasks/controllers/tasks_controller.dart';
 
 class CompleteTasksScreen extends StatelessWidget {
   const CompleteTasksScreen({super.key});
-
-  @override
+  @override 
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (BuildContext _) => TasksController()..init(),
