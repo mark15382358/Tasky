@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "/Users/usamaelgendy/Developer/flutter/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/usamaelgendy/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/usamaelgendy/Work/My_Cources/usama_elgendy_courses /mastering_flutter_from_zero_to_hero /sourse_code/tasky/android/app/.cxx/Debug/z55344po/armeabi-v7a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/usamaelgendy/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/usamaelgendy/Work/My_Cources/usama_elgendy_courses /mastering_flutter_from_zero_to_hero /sourse_code/tasky/android/app/.cxx/Debug/z55344po/armeabi-v7a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {}
+}

@@ -1,0 +1,2 @@
+/Users/usamaelgendy/Work/My_Cources/usama_elgendy_courses /mastering_flutter_from_zero_to_hero /sourse_code/tasky/android/app/.cxx/Debug/z55344po/x86_64/CMakeFiles/edit_cache.dir
+/Users/usamaelgendy/Work/My_Cources/usama_elgendy_courses /mastering_flutter_from_zero_to_hero /sourse_code/tasky/android/app/.cxx/Debug/z55344po/x86_64/CMakeFiles/rebuild_cache.dir
